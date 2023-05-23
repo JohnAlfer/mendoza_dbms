@@ -1,0 +1,26 @@
+DROP DATABASE kayobahala;
+CREATE DATABASE kayobahala;
+
+use kayobahala;
+
+CREATE TABLE Studentinfo(
+    StudentNo int PRIMARY KEY AUTO_INCREMENT,
+    StudentFname varchar(50),
+    StudentLname varchar(50),
+    Major varchar(50),
+    Gender varchar(50),
+    HomeAddress varchar(50)
+);
+
+CREATE TABLE Grade(
+    StudentNo int,
+    SubCode int PRIMARY KEY AUTO_INCREMENT,
+    Grade double,
+    CONSTRAINT FKStudentInfo FOREIGN KEY (StudentNo) REFERENCES StudentInfo(StudentNo)
+);
+
+CREATE TABLE subject(
+    SubCode int,
+    SubDescr varchar(50),
+    CONSTRAINT FKGrade FOREIGN KEY (SubCode) REFERENCES Grade(SubCode)
+);
